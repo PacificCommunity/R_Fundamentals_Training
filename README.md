@@ -14,7 +14,7 @@ Download and install the software in this order:
 ## FRESH R SET UP Code
 R is like a new baby when its first installed. Copy and paste the following code EXACTLY as is. This will take a few hours, and prompt you a copy of times for answers to different questions.
 
-install.packages("ctv")
+``install.packages("ctv")
 library(ctv)
 install.views("Bayesian")
 install.views("CausalInference")
@@ -47,7 +47,7 @@ install.views("WebTechnologies")
 install.views("ActuarialScience")
 install.views("Hydrology")
 devtools::install_github("omegahat/RDCOMClient")
-
+``
 
 ## Clone your own Repo
 In the instructions below, "FirstnameLastnameVersion" is your first name, and your last name put together. Secondly, GIT is case-sensistive so "git add -a" is different from "git add -A".
