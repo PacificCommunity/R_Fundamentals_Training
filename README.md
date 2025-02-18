@@ -10,8 +10,10 @@ Welcome to R! This project is designed to give you the basic fundamentals in R f
 
 ## Clone your own Repo
 1. Time to make a git clone of this repo.
-   a. Find a place on your c drive - NOT ON YOUR ONEDRIVE (yes, I shouted. A local copy, not a cloud copy,  is really important)
-   b. 
+   a. Find a place on your c drive - NOT ON YOUR ONEDRIVE (yes, I shouted. A local copy, not a cloud copy,  is really important) - where you are going to save all of your GIT work. For example, I have an area called "C:\From BigDisk\GIT"
+   b. Open gitbash and change directory to that choosen location in 1.a (cd "C:\From BigDisk\GIT") 
+   c. Clone the repo: 
+   
 
 
 
