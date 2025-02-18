@@ -53,7 +53,7 @@ devtools::install_github("omegahat/RDCOMClient")
 ## Clone your own Repo
 In the instructions below, "FirstnameLastnameVersion" is your first name, and your last name put together. Secondly, GIT is case-sensistive so "git add -a" is different from "git add -A".
 
-## Time to make a git clone of this repo.
+#### Time to make a git clone of this repo.
 1. Find a place on your c drive - NOT ON YOUR ONEDRIVE (yes, I shouted. A local copy, not a cloud copy,  is really important) - where you are going to save all of your GIT work. For example, I have an area called "C:\From BigDisk\GIT"
 2. Open gitbash and change directory to that choosen location in 1.a (cd "C:\From BigDisk\GIT") 
 3. Clone the repo: git clone https://github.com/PacificCommunity/R_Fundamentals_Training.git
