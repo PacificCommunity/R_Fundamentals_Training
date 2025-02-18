@@ -50,6 +50,9 @@ install.views("ActuarialScience")
 install.views("Hydrology")
 devtools::install_github("omegahat/RDCOMClient")
 ```
+If you want to know what functionality each of these commands is loading, look here: https://cran.r-project.org/web/views/
+
+
 
 ## Clone your own Repo
 In the instructions below, "FirstnameLastnameVersion" is your first name, and your last name put together. Secondly, GIT is case-sensistive so "git add -a" is different from "git add -A".
