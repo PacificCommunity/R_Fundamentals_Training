@@ -9,7 +9,8 @@ Download and install the software in this order:
 3. Notepad++ from here: https://notepad-plus-plus.org/downloads/
 4. Miktek from here: https://miktex.org/howto/download-miktex
 5. Pandoc from here: https://pandoc.org/
-6. Git (64 bit windows version) from here: https://git-scm.com/downloads/win
+6. ImageMagik from here: https://imagemagick.org/script/download.php#windows
+7. Git (64 bit windows version) from here: https://git-scm.com/downloads/win
 
 ## FRESH R SET UP Code
 R is like a new baby when its first installed. Copy and paste the following code EXACTLY as is. This will take a few hours, and prompt you a copy of times for answers to different questions.
