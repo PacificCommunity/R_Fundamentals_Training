@@ -496,7 +496,8 @@
    ##
    ## Save the TA_Only as both and R data frame, and as a csv for sending to someone. 
    ##
-      save(Standardised_Employment_Estimates,    file = 'Data_Intermediate/Standardised_Employment_Estimates.rda')
+      save(Standardised_Employment_Estimates,  file = 'Data_Intermediate/Standardised_Employment_Estimates.rda')
+      save(Standardised_Employment_Aggregates, file = 'Data_Intermediate/Standardised_Employment_Aggregates.rda')
       
 ##
 ##    And we're done
