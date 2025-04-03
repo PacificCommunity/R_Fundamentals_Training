@@ -35,6 +35,7 @@
    ##    A little fix to make this run quicker over the inter
    ##
   Directories <- Directories[str_detect(Directories$Biff, ".xls"),]
+#   Directories <- Directories[str_detect(Directories$Biff, "nhcc"),]
    
   
    ##
@@ -67,7 +68,9 @@
 #             Current_Tab$unprotect()
              unlink("Data_Intermediate/*.csv")
              result = tryCatch({ 
-                                 ## Current_Tab$Range("A1:IV60000")$RemoveSubtotal()
+                                 Current_Tab$Range("A1:IV60000")$RemoveSubtotal()
+                                 Range <- Current_Tab$Range("A1:IV60000")
+                                 Range[["NumberFormat"]] <- "0.000000000000"
                                  Current_Tab$SaveAs(FileName =  paste0(str_replace_all(getwd(), "\\/", "\\\\"), "\\Data_Intermediate\\test.csv"), FileFormat = 6)
                                  ##
                                  ##     Stick everything back in an appropriately named data frame and save

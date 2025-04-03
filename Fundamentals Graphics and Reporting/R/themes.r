@@ -8,7 +8,7 @@
 #------------------SPC Colour Palette-------------------------
 
 font_paths(paste0(getwd(), "/R"))
-font_add(family = "MyriadPro-Bold",       regular = "/R/MYRIADPRO-BOLD.OTF")
+font_add(family = "MyriadPro-Bold",        regular = "/R/MYRIADPRO-BOLD.OTF")
 font_add(family = "MyriadPro-Light",       regular = "/R/MyriadPro-Light.OTF")
 font_add(family = "MyriadPro-Regular",     regular = "/R/MYRIADPRO-REGULAR.OTF")
 font_add(family = "MyriadPro-BoldItalics", regular = "/R/MYRIADPRO-BOLDCONDIT.OTF")
