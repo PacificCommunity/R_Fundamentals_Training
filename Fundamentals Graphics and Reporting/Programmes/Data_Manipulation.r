@@ -120,7 +120,7 @@
                                                               Year = TIME_PERIOD,
                                                               Indicator = Indicator,
                                                               Urbanisation = Urbanization,
-                                                              Labour_and_employment_status = Labour_and_employment_status,
+                                                              #Labour_and_employment_status = Labour_and_employment_status,
                                                               Disability = Disability),
                                                     sum, 
                                                     na.rm = TRUE))
@@ -264,9 +264,18 @@
       ##   Making a data frame "long": use this when someone has sent you a file that's not in tidy format, and you want to tidy it
       ##
          Nauru_Women_Only_Long <- reshape2::melt(Nauru_Women_Only_Wide,               #  What's the dataset we want to make "long". 
-                                                 id.vars = c("Age", "TIME_PERIOD"))   #  What's the variables that are existing columns you want to keep as colomns? All other variables will be transposed
+                                                 id.vars = c("Age", "TIME_PERIOD"),
+                                                 variable.name ="labour_force",
+                                                 value.name = "obs_value")   #  What's the variables that are existing columns you want to keep as colomns? All other variables will be transposed
+         Nauru_Women_Only_Long$lfs <- ifelse(Nauru_Women_Only_Long$labour_force=="Employed","Employed","Other")
          Nauru_Women_Only_Long   #  R makes two new variables: "variable" which new has all of the column headings, and "value" which has all of the values.
   
+         Nauru_Women_Only_Wide2 <- reshape2::dcast(Nauru_Women_Only_Long,
+                                                   Age + TIME_PERIOD ~ lfs,
+                                                   value.var = "obs_value",
+                                                   fun.aggregate = mean,
+                                                   na.rm=TRUE)
+         ?reshape2::dcast
 
 ###
 ###      FOURTH TRICK - SUBSETTING
@@ -333,6 +342,18 @@
             Exclusive_Wide_Check$Total <- Exclusive_Wide_Check$Employed + Exclusive_Wide_Check$`Outside Labour Force` + Exclusive_Wide_Check$Unemployed
 
 
+            
+            Women_KI <- Pacific_Labour_Force[(Pacific_Labour_Force$Indicator     == "Proportion of persons by professional status") &
+                                                 (Pacific_Labour_Force$Age           == "15-24") &
+                                                 (Pacific_Labour_Force$Urbanization  == "National") &
+                                                 (Pacific_Labour_Force$Sex           == "Female") &
+                                               (Pacific_Labour_Force$TIME_PERIOD == 2019) &
+                                               (Pacific_Labour_Force$Disability == "Persons with disability") &
+                                                (Pacific_Labour_Force$Pacific_Island_Countries_and_territories=="Kiribati"),]
+            
+            
+            
+            
 
       ##
       ##    With Subsetting, anything that excepts a dataset, will also except a subsetted data

@@ -1,0 +1,220 @@
+---
+title: Kiribati Disability Fact Sheet
+subtitle: "Source: Kiribati 2020 Population and Housing Census"
+author: The Pacific Community
+date: "`r format(Sys.time(), '%B %Y')`"
+fontsize: 11pt
+urlcolor: blue
+classoption: a4paper
+geometry: margin = 1in
+fig_caption: true
+output: 
+   bookdown::word_document2:
+      reference_docx: "C:\\repositories\\R_Fundamentals_Training\\Elsie_Graphics\\Elsie_Graphics\\Product_Output\\Sense_Partners_Template.docx"
+      toc: false  
+      figure:
+        style: Table
+        layout: autofit
+        width: 1.0
+        caption:
+          style: Table Caption
+          pre: 'Table '
+          sep: ': '
+          topcaption: true
+      
+   bibliography: bibliography.json
+header-includes:
+   - \usepackage[percent]{overpic}   
+   - \usepackage{tikz}
+   - \usetikzlibrary{calc}
+   - \usepackage{graphicx}
+   - \usepackage{placeins}
+   - \usepackage{fancyhdr}
+   - \pagestyle{fancy}
+   - \fancyhf{}
+   - \addtolength{\headwidth}{\marginparsep}
+   - \addtolength{\headwidth}{\marginparwidth}   
+   - \usepackage{floatrow}
+   - \floatsetup[figure]{capposition=top}
+
+
+---
+\newpage
+
+
+```{r setup, cache=FALSE, include=FALSE}
+
+library(ggplot2)
+library(plyr)
+library(stringr)
+library(reshape2)
+library(lubridate)
+library(calibrate)
+library(Hmisc)
+library(RColorBrewer)
+library(stringi)
+library(sqldf)
+library(extrafont)
+library(scales)
+library(RDCOMClient)
+library(extrafont)
+library(tictoc)
+##
+##    Project-specific libraries
+##
+library(sysfonts)
+library(showtext)
+
+library(knitr)
+library(htmlTable)
+library(png)
+library(bookdown)
+library(kableExtra)
+library(pander)
+library(officer)
+
+
+options(xtable.comment = FALSE)
+
+BaseDir <- "C:\\repositories\\R_Fundamentals_Training\\Elsie_Graphics\\Elsie_Graphics\\Graphical_Output\\"
+   
+##
+## https://davidgohel.github.io/officedown/index.html
+##   
+
+   load('C:\\repositories\\R_Fundamentals_Training\\Elsie_Graphics\\Elsie_Graphics\\Data_Intermediate\\Demographics.rda')
+   load('C:\\repositories\\R_Fundamentals_Training\\Elsie_Graphics\\Elsie_Graphics\\Data_Intermediate\\Prevalence.rda')
+   load('C:\\repositories\\R_Fundamentals_Training\\Elsie_Graphics\\Elsie_Graphics\\Data_Intermediate\\Labour_Force.rda')
+   
+##
+## 
+##
+   Sex_Ratio           <- round((sum(Demographics$Population[Demographics$Sex == "Males"]) / sum(Demographics$Population[Demographics$Sex == "Females"])) * 100)
+   Mean_Age_Disabled   <- round(sum(Demographics$Population[Demographics$Measure == "With Disability"] * Demographics$Left_Age[Demographics$Measure == "With Disability"]) / 
+                                sum(Demographics$Population[Demographics$Measure == "With Disability"]))
+                          
+   Mean_Age_UnDisabled <- round(sum(Demographics$Population[Demographics$Measure == "Without Disability"] * Demographics$Left_Age[Demographics$Measure == "Without Disability"]) / 
+                                sum(Demographics$Population[Demographics$Measure == "Without Disability"]))
+                        
+                        
+   Sex_Ratio <- round((sum(Demographics$Population[Demographics$Sex == "Males"]) / sum(Demographics$Population[Demographics$Sex == "Females"])) * 100)
+   
+```
+
+   
+
+<!-- 
+##
+##       This bit below is the commentary written in R Markup
+--> 
+
+# DEMOGRAPHICS
+
+Kiribqgdjsadhs
+
+
+* Population aged 5+: `r sum(Demographics$Population)`
+* Population with disabilities: `r sum(Demographics$Population[Demographics$Measure == "With Disability"])`
+* Sex ratio (5+): Kiribati population is sightly dominated by females:  `r Sex_Ratio` males for 100 females 
+* Median age (5+)
+   * People with disabilities: `r Mean_Age_Disabled`  years
+   * People without disabilities: `r Mean_Age_UnDisabled`  years
+
+
+```{r Demographics, echo=FALSE, fig.pos='h', out.width = '100%', fig.cap = "Demographics - by Age, Disability and Sex"}
+      
+knitr::include_graphics(paste0(BaseDir, "Demographics.png"))
+
+```
+
+
+\newpage
+
+# PREVALENCE
+
+```{r Prevalence, echo=FALSE, fig.pos='h', out.width = '100%', fig.cap = "Disability Prevalence, by Age Group"}
+
+knitr::include_graphics(paste0(BaseDir, "Prevalence.png"))
+
+```
+
+
+
+\newpage
+
+# EDUCATION
+
+
+```{r Education, echo=FALSE, fig.pos='h', out.width = '100%', fig.cap = "Education by Disability"}
+
+knitr::include_graphics(paste0(BaseDir, "Education.png"))
+
+```
+
+
+
+\newpage
+
+# LABOUR FORCE
+
+```{r LabourForce, echo=FALSE, fig.pos='h', out.width = '100%', fig.cap = "Labour Force Status, by Disability"}
+
+knitr::include_graphics(paste0(BaseDir, "Labour_Force.png"))
+
+```
+
+
+\newpage
+
+# WATER AND SANITATION
+* People aged 5+ with disabilities are slightly less likely to live in a household with access to improved water sources (SDG 6.1.1)
+* Total: 74%		Without disabilities: 74%	With disabilities: 71%
+
+* People aged 5+ with disabilities are slightly less likely to live in a household with access to sanitation facilities (SDG 6.1.2)
+* Total: 66%		Without disabilities:66%	With disabilities:60%
+
+
+
+\newpage
+
+# ACCESS TO INTERNET
+## People aged 10+ with access to internet
+*	Slightly more than 1 in 10 people with disabilities had access to Internet the week before the interview in 2020
+Total: 37%	Without disabilities: 38%		With disabilities:13%
+
+*	Youth 10-24 years and adult 50+ with disabilities have less access to internet than their peer without disabilities
+
+Age Group | With disability | Without disability |
+----------|-----|---------------------   
+10-24 | 17% | 36%
+25-49 | 47% | 55%
+50+ | 36% | 9%
+
+*	Among those who had access to internet, most people (83%) had access to internet at home, regardless of disability status
+
+
+
+\newpage
+
+# DEFINITIONS
+
+## Defining Disability 
+No single definition of disability exists. Definitions vary depending on the purpose for measurement. Moreover, the nature and severity of disabilities can vary greatly depending on cultural contexts. Yet, data on the size and characteristics of the population with disability, which also allow for cross-cultural comparisons, require standardization in both the conceptualization and the measurement of disability. The International Classification of Functioning, Disability and Health classifies disability into three interrelated areas: Impairments, Activity limitations and Participation restrictions. 
+
+The Washington Group developed an extended set of survey items on functioning to be used as components of population surveys or as supplements to specialised surveys. These questions identify persons who are at a greater risk of experiencing restrictions in performing usual activities such as those undertaken in daily living or participating in roles if no accommodations are made.
+
+## Data and Methods
+Disability was conceptualised as a continuum, from minor functioning difficulties to severe difficulties that significantly impact people’s lives. According to the WG recommendations, persons with disabilities are classified as anyone with at least one of six functioning domains declared as “a lot of difficulty” or “cannot do at all” as recommended by the Washington Group for international comparability. 
+
+This factsheet use data from the Kiribati population and housing census 2020. The six variables from the WG short set on functioning were combined to identify the population with disabilities. Variables for analysis was derived from these questions for persons aged 5+ years who had reported at least one domain as “a lot of difficulty” or “cannot do it at all” were identified as having disabilities, in accordance with the recommendations of the WG (Washington Group, 2009).  
+
+Data were disaggregated by disability status, for the comparison of people with and without disabilities, a necessary step towards addressing disparities. The Chi-Square Test of Independence have been carried out to examines that the sets of variables are likely to be related with each other or not (significance level p<0.05). 
+
+## For further information
+
+* Kiribati disability monograph: https://www.spc.int/digitallibrary/get/rtiav
+* Pacific disability dashboard:  https://pacificdata.org/disability-dashboard
+* Washing Group definitions and methods: https://www.washingtongroup-disability.com/question-sets/wgshort-set-on-functioning-wg-ss/
+
+
+

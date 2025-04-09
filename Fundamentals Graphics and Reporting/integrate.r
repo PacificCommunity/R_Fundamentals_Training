@@ -37,7 +37,7 @@
    ##
    ##    Set working directory - REPLACE THIS WITH SOMETHING SPECIFIC FOR YOU
    ##
-      setwd("C:\\Users\\jamesh\\OneDrive - SPC\\R Fundamentals Training\\Fundamentals Graphics and Reporting")
+      setwd("C:/repositories/R_Fundamentals_Training/Fundamentals Graphics and Reporting")
 
       ##
       ##    Run a programme that reads in excel and outputs R dataframes
