@@ -33,16 +33,11 @@
       library(tictoc)
       library(sysfonts)
       library(showtext)
-   ##
-   ##    Project-specific libraries
-   ##
-      library(data.table)
-      library(rsdmx)
       
    ##
    ##    Set working directory - REPLACE THIS WITH SOMETHING SPECIFIC FOR YOU
    ##
-      setwd("C:\\From BigDisk\\GIT\\R_Fundamentals_Training\\Fundamentals Graphics and Reporting")
+      setwd("C:\\Git\\R_Fundamentals_Training\\Fundamentals Graphics and Reporting")
 
       ##
       ##    Run a programme that reads in excel and outputs R dataframes
@@ -62,7 +57,7 @@
          ##
          ##    Make sure the output_file location is something specific for you
          ##
-         rmarkdown::render("Programmes/SSAP_Value_Report.rmd", output_file = "C:\\From BigDisk\\GIT\\R_Fundamentals_Training\\Fundamentals Graphics and Reporting\\Product_Output\\Value of Good Science.docx")                
+         rmarkdown::render("Programmes/SSAP_Value_Report.rmd", output_file = "C:\\GIT\\R_Fundamentals_Training\\Fundamentals Graphics and Reporting\\Product_Output\\Value of Good Science.docx")                
 
 
 

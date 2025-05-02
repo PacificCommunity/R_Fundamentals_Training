@@ -36,8 +36,9 @@
    ##
    ##    Clear the memory
    ##
-      rm(list=ls(all=TRUE))
-                     
+         rm(list=ls(all=TRUE))
+
+                        
    ##
    ## Step 1: Read in data from a csv.
    ##    Reading csv is through either the read.table command or the read.csv command.
@@ -145,7 +146,7 @@
             ##    Data frame names can have spaces in them, but to access them using $ notation, they need to be enclosed on a special character `
             ##       (` is the key immediately to the left of the number 1 on the main keys of the keyboard)
             ##
-               Pacific_Labour_Force$Unit of measure
+               Pacific_Labour_Force$`Unit of measure`
                Pacific_Labour_Force$`Unit of measure`
 
             ##
@@ -165,21 +166,20 @@
          ##    You can access the columns using R's matrix notation of [row,col] notation
          ##
              Pacific_Labour_Force[,8]  #  R reads this as "all row, eighth" column
-             Another_Pacific_Labour_Force_Area <- Pacific_Labour_Force[,8] # Assign the "all row, eighth" (which should be Pacific_Island_Countries_and_territories from the str(Pacific_Labour_Force) command) to a new variable 
-             
+            
             ##
             ## Test to see whether the Pacific_Labour_Forces Area column from using $ is the same as the Pacific_Labour_Forces Area column from the matrix notation.
             ##
             ##   In R, tests for equality using the double == sign. A single = sign is the same as an assignment <- 
             ##
             Pacific_Labour_Force_Areas == Another_Pacific_Labour_Force_Area
-            
+length (which ( Pacific_Labour_Force_Areas == Another_Pacific_Labour_Force_Area))         
          ##
          ##    Put the matrix notation together to select elements or groups of elements
          ##
             Pacific_Labour_Force[80,5]                # the 80th row and the 5th column
             Pacific_Labour_Force[25:30,1:3]           # rows 25:30 of columns 1:3
-            Pacific_Labour_Force[c(1,3,5,7),  c(1,3)] # rows 1,3,5 and 7 of columns 1 and 3
+            .# rows 1,3,5 and 7 of columns 1 and 3
          
          ##
          ##    Subsetting through matrix notation
