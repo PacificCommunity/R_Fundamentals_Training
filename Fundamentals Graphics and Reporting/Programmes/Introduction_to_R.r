@@ -121,6 +121,7 @@
 
             names(Pacific_Labour_Force)
             head(Pacific_Labour_Force)
+            ?names
             
          ##
          ##    You can access the columns using $ notation
@@ -128,7 +129,7 @@
             ##
             ##    Show the Pacific_Island_Countries_and_territories column of the Pacific_Labour_Force dataframe
             ##
-               Pacific_Labour_Force$Pacific_Island_Countries_and_territories 
+               unique(Pacific_Labour_Force$Pacific_Island_Countries_and_territories) 
                
             ##
             ##    Assign the Pacific_Island_Countries_and_territories column of the Pacific_Labour_Force dataframe to a new variable called "Pacific_Labour_Force_Areas". I'm doing
@@ -160,6 +161,11 @@
             Pacific_Labour_Force[1,]    # the first row of the Pacific_Labour_Force dataframe. Note, the comma and brackets. R reads this as "first row, all coloums"
             Pacific_Labour_Force[1:10,] # the first 10 rows of the Pacific_Labour_Force dataframe. The : tells R to made a sequence from 1 to 10
             1:10                        # just show what happens when you run this command.
+            Pacific_Labour_Force$Unique_ID <- row.names(Pacific_Labour_Force)
+            
+            length(Pacific_Labour_Force)
+            nrow(Pacific_Labour_Force)
+            
             
          ##
          ##    You can access the columns using R's matrix notation of [row,col] notation
@@ -173,6 +179,12 @@
             ##   In R, tests for equality using the double == sign. A single = sign is the same as an assignment <- 
             ##
             Pacific_Labour_Force_Areas == Another_Pacific_Labour_Force_Area
+            
+            Another_Pacific_Labour_Force_Area[1250] <- "Hello James"
+            
+            ?max.print
+            
+            which(Pacific_Labour_Force_Areas != Another_Pacific_Labour_Force_Area)
             
          ##
          ##    Put the matrix notation together to select elements or groups of elements
@@ -191,8 +203,10 @@
                Pacific_Labour_Force$Pacific_Island_Countries_and_territories == "Solomon Islands"          # this tests whether the Pacific_Island_Countries_and_territories variable in the Pacific_Labour_Force data frame equals "Solomon Islands"
                                                                                                           # and returns either TRUE or FALSE for each observations in the data frame
                Pacific_Labour_Force[Pacific_Labour_Force$Pacific_Island_Countries_and_territories == "Solomon Islands",]  # Putting the same test as a row manipulation will return every observation where the value is true
-
-            ##
+              
+                SB <- Pacific_Labour_Force[Pacific_Labour_Force$Pacific_Island_Countries_and_territories == "Solomon Islands",]
+            
+                ##
             ##    If the variable you're interested in is numeric, then you can use this to select different values
             ##
                unique(Pacific_Labour_Force$Indicator)
