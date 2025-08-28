@@ -11,10 +11,7 @@
 ##
 ##  load some functionality
 ##
-import geopandas
 import pandas
-import geodatasets
-import matplotlib
 pandas.options.display.max_columns = None
 pandas.options.display.width = 1500
 
