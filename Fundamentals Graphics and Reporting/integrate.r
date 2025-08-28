@@ -42,11 +42,7 @@
    ##
    ##    Set working directory - REPLACE THIS WITH SOMETHING SPECIFIC FOR YOU
    ##
-<<<<<<< HEAD
       setwd("C:\\From BigDisk\\GIT\\R_Fundamentals_Training\\Fundamentals Graphics and Reporting")
-=======
-      setwd("C:/repositories/R_Fundamentals_Training/Fundamentals Graphics and Reporting")
->>>>>>> origin/amandine
 
       ##
       ##    Run a programme that reads in excel and outputs R dataframes
