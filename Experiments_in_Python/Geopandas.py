@@ -2,7 +2,7 @@
 ##   Ok, this is James's first attempt at geospatial in Python
 ##
 ##      Functionality installed from the command prompt:
-##          python -m pip install Geopandas pandas geodatasets
+##          python -m pip install Geopandas pandas geodatasets matplotlib
 ##
 ##
 ##

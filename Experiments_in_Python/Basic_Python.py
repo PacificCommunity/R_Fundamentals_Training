@@ -4,6 +4,9 @@
 ##    Objective:  Learn how to do all those things I teach other people to do in R
 ##                  https://www.w3schools.com/python/python_casting.asp
 ##
+##                Functionality installed from the command prompt:
+##                    python -m pip install Geopandas pandas geodatasets matplotlib
+##
 ##    Author:     James Hogan, started 28 August 2026
 ##
 ##
@@ -26,7 +29,7 @@ pandas.options.display.width = 1500
 ##    through putting a question mark in front of the command you want more information on.
 ##
 
-Pacific_Labour_Force = pandas.read_csv("C:/From BigDisk/Experiments_in_Python/SPC,DF_LABEMP,1.0+all.csv")
+Pacific_Labour_Force = pandas.read_csv("C:/GIT_Projects/R_Fundamentals_Training/Experiments_in_Python/SPC,DF_LABEMP,1.0+all.csv")
 
 ##
 ##   Pacific_Labour_Force.head() will show you the first 6 records of the dataframe.
