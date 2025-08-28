@@ -156,7 +156,7 @@ print(Same_Extract[Same_Extract["OBS_VALUE"] == Same_Extract["OBS_VALUE"].max()]
 ##
 print(Same_Extract[Same_Extract["Pacific Island Countries and territories"] == "Kiribati"])
 
-Specific_Countries = Same_Extract["Pacific Island Countries and territories"].isin(["Kiribati", "Tuvalu", "Tonga"])
+Specific_Countries = Same_Extract["Pacific Island Countries and territories"].isin({"Kiribati", "Tuvalu", "Palau"})
 print(Specific_Countries)
 
 ##
