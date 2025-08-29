@@ -29,7 +29,10 @@ pandas.options.display.width = 1500
 ##    through putting a question mark in front of the command you want more information on.
 ##
 
-Pacific_Labour_Force = pandas.read_csv("C:/GIT_Projects/R_Fundamentals_Training/Experiments_in_Python/SPC,DF_LABEMP,1.0+all.csv")
+#Pacific_Labour_Force = pandas.read_csv("C:/GIT_Projects/R_Fundamentals_Training/Experiments_in_Python/SPC,DF_LABEMP,1.0+all.csv")
+Pacific_Labour_Force = pandas.read_csv("C:/From BigDisk/GIT/R_Fundamentals_Training/Experiments_in_Python/SPC,DF_LABEMP,1.0+all.csv")
+
+
 
 ##
 ##   Pacific_Labour_Force.head() will show you the first 6 records of the dataframe.
