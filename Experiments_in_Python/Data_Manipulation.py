@@ -15,6 +15,9 @@
 ##  load some functionality
 ##
 import pandas
+import seaborn
+import matplotlib
+
 pandas.options.display.max_columns = None
 pandas.options.display.max_rows = 1000
 pandas.options.display.width = 1500
@@ -140,7 +143,7 @@ Nauru_Women_Only_Long = Nauru_Women_Only_Wide.melt(id_vars = ["Labour and employ
 print(Nauru_Women_Only_Long)
 print(Nauru_Women_Only_Long.info())
 
-Standard_Population = Pacific_Labour_Force[(Pacific_Labour_Force["Indicator"]    == "Proportion of persons by professional status") &
+Standard_Population = Pacific_Labour_Force[(Pacific_Labour_Force["Indicator"]    == "Number of persons by professional status") &
                                            (Pacific_Labour_Force["Age"]          != "All ages") &
                                            (Pacific_Labour_Force["Urbanization"] == "National") &
                                            (Pacific_Labour_Force["Sex"]          != "Total") &
@@ -170,50 +173,42 @@ Country_Level_Employment_Structure = Country_Level_Employment_Structure.groupby(
                                                                                  sort     = False)["OBS_VALUE"].aggregate(["mean"])  
 Country_Level_Employment_Structure["mean"] = Country_Level_Employment_Structure["mean"]/100
 
-print(Country_Level_Employment_Structure)
-                                            # aggregate(list(Proportions = OBS_VALUE/100),
-                                                      # list(Sex = Sex,
-                                                           # Age = Age,
-                                                           # Country = Pacific_Island_Countries_and_territories,
-                                                           # Labour_and_employment_status = Labour_and_employment_status,  # DROP Out this indicator so we can see whether the data sums up
-                                                           # Disability = Disability),
-                                                    # mean, 
-                                                    # na.rm = TRUE))      
-# ##
-# ##    Still sum up to 1? - Yep, good enough for me
-# ##
-# Country_Level_Employment_Structure <- reshape2::dcast(Country_Level_Employment_Structure,
-                         # Country + Age + Disability + Sex ~  Labour_and_employment_status,
-                         # value.var = c("Proportions"))       
-                         
-# Country_Level_Employment_Structure <- reshape2::melt(Country_Level_Employment_Structure,           
-                        # id.vars = c("Country", "Age", "Disability", "Sex")) 
-                                       
-# Country_Level_Employment_Structure$value[is.na(Country_Level_Employment_Structure$value)] <- 0
 
-# Check <- reshape2::dcast(Country_Level_Employment_Structure,                                   
-                         # Country + Age + Disability + Sex ~  variable,
-                         # value.var = c("value")) 
+Country_Level_Employment_Structure = Country_Level_Employment_Structure.pivot_table(index = ["Pacific Island Countries and territories","Age", "Sex", "Disability"],
+                                                                                    columns = ["Labour and employment status"],
+                                                                                    values = ["mean"],
+                                                                                    aggfunc='first').reset_index()
 
-# Check$Total <- Check$Employed + Check$`Outside Labour Force` + Check$Unemployed
+Country_Level_Employment_Structure.columns = [' '.join(col).strip() for col in Country_Level_Employment_Structure.columns.values]
+##
+##    Still sum up to 1? - Yep, good enough for me
+##
+Country_Level_Employment_Structure = Country_Level_Employment_Structure.fillna(0)
+Country_Level_Employment_Structure["Total"] = Country_Level_Employment_Structure["mean Employed"] + Country_Level_Employment_Structure["mean Outside Labour Force"] + Country_Level_Employment_Structure["mean Unemployed"]
 
-# ##
-# ##    Now, apply these "micro" level breakdowns at the country level, to the standard population of the pacific 
-# ##       to standardise employment using a merge
-# ##
-# Standardised_Employment_Estimates <- merge(Country_Level_Employment_Structure,
-                                           # Standard_Population,
-                                           # by = c("Age", "Disability", "Sex"))
-                                           
-# Standardised_Employment_Estimates$Number_of_Persons <- Standardised_Employment_Estimates$value * Standardised_Employment_Estimates$Total
+Country_Level_Employment_Structure = Country_Level_Employment_Structure.melt(id_vars = ["Pacific Island Countries and territories","Age","Sex","Disability","Total"])
+##
+##    Now, apply these "micro" level breakdowns at the country level, to the standard population of the pacific 
+##       to standardise employment using a merge
+##
 
+Standardised_Employment_Estimates = Country_Level_Employment_Structure.merge(Standard_Population,
+                                                                             on = ["Age", "Disability", "Sex"])
+Standardised_Employment_Estimates["Number_of_Persons"] = Standardised_Employment_Estimates["value"] * Standardised_Employment_Estimates["mean"]
+                                          
+Standardised_Employment_Aggregates = Standardised_Employment_Estimates.groupby(['Pacific Island Countries and territories',
+                                                                                'variable'],
+                                                                                 as_index = False,
+                                                                                 sort     = False)["Number_of_Persons"].aggregate(["sum"])  
+print(Standardised_Employment_Aggregates)
 
-# Standardised_Employment_Aggregates <-  with(Standardised_Employment_Estimates,
-                                            # aggregate(list(Number_of_Persons = Number_of_Persons),
-                                                      # list(Country = Country,
-                                                           # Labour_and_employment_status = variable),
-                                                    # sum, 
-                                                    # na.rm = TRUE))    
+seaborn.set_theme(style="darkgrid")
+seaborn.displot(Standardised_Employment_Aggregates,
+                x   = "variable", 
+                y   = "sum",
+                row = "Pacific Island Countries and territories",
+)   
+matplotlib.pyplot.show()
 
 
                                      
