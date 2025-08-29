@@ -12,8 +12,16 @@
 ##
 
 ##
+##      Clear the memory
+##
+
+for name in dir():
+    if not name.startswith('__'):  # Exclude built-in names and special attributes
+        del globals()[name]
+##
 ##  load some functionality
 ##
+import os
 import pandas
 import seaborn
 import matplotlib
@@ -32,9 +40,10 @@ pandas.options.display.width = 1500
 ##    Find out a little bit about the syntax for each, but bring up the help documentation
 ##    through putting a question mark in front of the command you want more information on.
 ##
+current_directory = os.getcwd()
+print(f"Current Working Directory: {current_directory}")
 
-#Pacific_Labour_Force = pandas.read_csv("C:/GIT_Projects/R_Fundamentals_Training/Experiments_in_Python/SPC,DF_LABEMP,1.0+all.csv")
-Pacific_Labour_Force = pandas.read_csv("C:/From BigDisk/GIT/R_Fundamentals_Training/Experiments_in_Python/SPC,DF_LABEMP,1.0+all.csv")
+Pacific_Labour_Force = pandas.read_csv(current_directory + "/SPC,DF_LABEMP,1.0+all.csv")
 
 ##
 ## Manipulate the data. Have you read the Tidy Data pdf yet?
@@ -207,7 +216,9 @@ seaborn.displot(Standardised_Employment_Aggregates,
                 x   = "variable", 
                 y   = "sum",
                 row = "Pacific Island Countries and territories",
-)   
+) 
+
+
 matplotlib.pyplot.show()
 
 
