@@ -5,7 +5,7 @@
 ##                  https://www.w3schools.com/python/python_casting.asp
 ##
 ##                Functionality installed from the command prompt:
-##                    python -m pip install Geopandas pandas geodatasets matplotlib
+##                    python -m pip install Geopandas pandas seaborn geodatasets matplotlib pywin32
 ##
 ##                    pip install pywin32 
 ##
@@ -36,10 +36,6 @@ pandas.options.display.width = 1500
 
 current_directory = os.getcwd()
 print(f"Current Working Directory: {current_directory}")
-
-
-arr = os.listdir("C:/From BigDisk/GIT/R_Fundamentals_Training/Experiments_in_Python/")
-print(arr)
 
 ##
 ##    Initialise some ComClient parameters
@@ -92,6 +88,6 @@ for j in range(0,current_file.Worksheets.count):
     # }, finally = {
     # })  
 
-ex.quit()
+#ex.quit()
 
 
