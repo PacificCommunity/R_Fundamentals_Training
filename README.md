@@ -48,9 +48,10 @@ install.views("Tracking")
 install.views("WebTechnologies")
 install.views("ActuarialScience")
 install.views("Hydrology")
-devtools::install_github("omegahat/RDCOMClient")
 ```
 If you want to know what functionality each of these commands is loading, look here: https://cran.r-project.org/web/views/
+
+RDCOMClient is a super handy utility that allows you to directly manipulate Microsoft Office programmes through their object model. However, with RTools 4.5 which updated the C++ compilier, the existing respository at https://github.com/omegahat/RDCOMClient does not work. And it looks like the main developer has abandoned the project. Instead https://github.com/jkylearmstrong-temple/RDCOMClient looks to have updated the C++ code and corrected the issue related to the change in compilier. Download the repo in its entirity, and within it base directory is a file: "RDCOMClient_0.96-1.zip" which can be installed as a local zip file through R's gui interface. And it works perfectly :)
 
 
 
